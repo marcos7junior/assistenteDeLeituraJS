@@ -1,0 +1,61 @@
+/* header */
+
+.header_title {
+    text-align: center;
+}
+
+
+/* main */
+.main_title {
+    text-align: center;
+}
+
+.drag-area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.book , .book1{
+    width: 150px;
+    height: 220px;
+    margin: 10px auto;
+}
+
+.section-books {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border: thin dashed red;
+    width: 30%;
+    min-height: 800px;
+    text-align: center;
+}
+
+.reading-books {
+    border: thin dashed blue;
+    width: 30%;
+    height: 800px;
+    text-align: center;
+}
+.readed-books {
+    border: thin dashed green;
+    width: 30%;
+    height: 800px;
+    text-align: center;
+}
+
+.zona-over {
+    opacity: 0.5;
+}
+
+/* .zone_title {
+    display: block;
+} */
+
+footer .container {
+    text-align: center;
+}
