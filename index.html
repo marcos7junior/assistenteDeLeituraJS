@@ -23,9 +23,26 @@
         <div class="container-fluid">
             <h1 class="main_title">Drag and Drop a Book</h1>
         </div>
+        <div id="result_messages"></div>
+        <div id="result_img"></div>
 
         <div class="container">
             <button id="btn_add_books" class="button bg-info">Add book</button>
+            <div class="add_book_container">
+                <form id="add_book_form">
+                    <div class="form-group">
+                        <label for="titulo">Title</label>
+                        <input type="text" id="title" class="form-control">
+                        <label for="titulo">Author</label>
+                        <input type="text" id="author" class="form-control">
+                        <label for="titulo">Nº of pages</label>
+                        <input type="number" id="pages" class="form-control">
+                        <label for="cover">Cover</label>
+                        <input type="file" accept="image/*" id="cover" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add new book</button>
+                </form>
+            </div>
         </div>
 
         <div class="container drag-area" >

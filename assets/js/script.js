@@ -4,36 +4,69 @@ const readedBooks = document.querySelector('.readed-books');
 const zoneTitleBooks = document.getElementById('zone_title_books');
 const zoneTitleDone = document.getElementById('zone_title_done');
 const btnAddBook = document.getElementById('btn_add_books');
-
-btnAddBook.addEventListener("click", addBook);
-
-function addBook() {
-    alert("Uaaaai siiir!");
-}
-
-let books = [
-    {   id: '0',
-        title: 'CleanCode',
-        cover: './assets/img/clear-code-cover.jpg',
-    },
-    {   id: '1',
-        title: 'MundoDeSofia',
-        cover: './assets/img/o-mundo-de-sofia.jpg',
-    },
-]
-
-zoneTitleBooks.innerText = `Books ${books.length}`;
-
+const formsAddBookContainer = document.querySelector('.add_book_container');
+const formsAddBook = document.querySelector('#add_book_form');
+const resultMessages = document.querySelector('#result_messages');
+const coverBook = document.getElementById('cover');
+let books = [];
 let reading = [];
 let done = [];
 
+
+btnAddBook.addEventListener("click", function addBook() {
+    formsAddBookContainer.style.display = "block";
+});
+
+formsAddBook.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    let title = document.getElementById('title');
+    let author = document.getElementById('author');
+    let pages = document.getElementById('pages');
+    let cover = document.getElementById('cover');
+    
+    books.push({
+        book_id: (Math.floor(Math.random()*100)).toString(),
+        book_title: title.value,
+        book_author: author.value,
+        book_pages: pages.value,
+        book_cover: cover.files[0],
+    })
+    
+    formsAddBookContainer.style.display = "none";
+    resultMessages.style.display = "block";
+    
+    resultMessages.innerHTML = 
+    `<div class="main_title alert alert-success" role="alert">
+            New book <strong>${title.value}</strong> added
+        </div>`;
+    ownedBooks.innerHTML = ''
+
+    generateBookList(books);
+
+    title.value = '';
+    author.value = '';
+    pages.value = '';
+    cover.value = '';
+
+    setTimeout(function() {
+        resultMessages.style.display = 'none';
+    }, 3000);
+});
+
+
 function generateBookList(books) {
     for(let book of books) {
-        ownedBooks.innerHTML += `<img class="book" src=${book.cover} alt=${book.title} draggable="true" ondragstart="drag(event)" id=${book.id}>`
+        let fr = new FileReader();
+        fr.readAsDataURL(book.book_cover);
+        fr.onload = function(e) {
+            ownedBooks.innerHTML += `<img class="book" src=${e.target.result} alt=${book.book_title} draggable="true" ondragstart="drag(event)" id=${book.book_id}>`
+        }
     }
 }
 
-generateBookList(books);
+if (books.length != 0) zoneTitleBooks.innerText = `Books ${books.length}`;
+
 
 function allowDrop(ev) {
     ev.preventDefault();

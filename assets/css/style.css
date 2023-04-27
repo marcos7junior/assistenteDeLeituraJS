@@ -4,6 +4,13 @@
     text-align: center;
 }
 
+#btn_add_books {
+    margin: 10px 0;
+}
+
+.add_book_container {
+    display: none;
+}
 
 /* main */
 .main_title {
@@ -19,7 +26,8 @@
     width: 100%;
 }
 
-.book , .book1{
+.book {
+    display: block;
     width: 150px;
     height: 220px;
     margin: 10px auto;
